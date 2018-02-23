@@ -18,12 +18,30 @@ a.tha {
     text-decoration: none;
     color: #fff;
 }
+div.article {
+    border: 1px solid pink
+}
+h2.article {
+    margin-left: 20px
+}
+h3.article {
+    margin-left: 40px
+}
 </style>
+
+<script>
+    function goto(){
+        return window.location.href = '/'
+    }
+</script>
+
 </head>
 <body>
 
+{% load staticfiles %}
+
 <div align="center">
-    <h1>Добро пожаловать на главную страницу</h1>
+    <img onclick="goto()" src=" {% static 'main/chgk.jpg' %}" align="left" height="122px"/><h1>Добро пожаловать на главную страницу</h1>
     <h2>"Что? Где? Когда?" в Артеме</h2>
 </div>
 
@@ -38,5 +56,13 @@ a.tha {
     </tr>
 </table>
 
+{% for art in articles %}
+<br>
+<div class="article">
+<h2 class="article">{{ art.heading }}</h2>
+<h3 class="article">{{ art.description }}</h3>
+<h4 align="right">{{ art.time }}</h4>
+</div>
+{% endfor %}
 </body>
 </html>

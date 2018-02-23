@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from .models import Article
+
 
 def index(request):
-    return render(request, 'ChGk/index.html')
+    context = {
+        'articles' : Article.objects.all()
+    }
+    return render(request, 'main/index.html', context)
